@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>MARCAR ASISTENCIA</mat-card-title>
+  </mat-card-header>
+  <br/>
+  <mat-card-content>
+    <button mat-raised-button color="primary" (click)="markAttendance()">
+      MARCAR
+    </button>
+
+    <div *ngIf="successMessage" class="success-message">
+      <mat-icon color="primary">check_circle</mat-icon>
+      {{ successMessage }}
+    </div>
+  </mat-card-content>
+</mat-card>

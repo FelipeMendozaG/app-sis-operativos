@@ -1,0 +1,36 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar -->
+  <mat-sidenav mode="side" opened>
+    <mat-toolbar color="primary">Menú</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard/marcar-asistencia">
+        <mat-icon matListIcon>how_to_reg</mat-icon>
+        <span matLine>Marcar Asistencia</span>
+      </a>
+
+      <a mat-list-item routerLink="/dashboard/asistencias">
+        <mat-icon matListIcon>event_note</mat-icon>
+        <span matLine>Mis Asistencias</span>
+      </a>
+
+      <mat-list-item (click)="logout()">
+        <mat-icon matListIcon>logout</mat-icon>
+        <span matLine>Cerrar Sesión</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-icon>dashboard</mat-icon>
+      <span class="title">Dashboard</span>
+    </mat-toolbar>
+
+    <div class="dashboard-content">
+      <!-- Aquí se renderizan las vistas hijas -->
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
