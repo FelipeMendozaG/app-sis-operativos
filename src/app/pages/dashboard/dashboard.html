@@ -3,14 +3,39 @@
   <mat-sidenav mode="side" opened>
     <mat-toolbar color="primary">Menú</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/dashboard/marcar-asistencia">
+      <a *ngIf="apiService.hasPermission('mark_attendance')" mat-list-item routerLink="/dashboard/marcar-asistencia">
         <mat-icon matListIcon>how_to_reg</mat-icon>
         <span matLine>Marcar Asistencia</span>
       </a>
 
-      <a mat-list-item routerLink="/dashboard/asistencias">
+      <a *ngIf="apiService.hasPermission('view_own_attendance')" mat-list-item routerLink="/dashboard/asistencias">
         <mat-icon matListIcon>event_note</mat-icon>
         <span matLine>Mis Asistencias</span>
+      </a>
+
+      <a *ngIf="apiService.hasPermission('generate_reports')" mat-list-item routerLink="/dashboard/generar-reportes">
+        <mat-icon matListIcon>style</mat-icon>
+        <span matLine>Reportes</span>
+      </a>
+
+      <a *ngIf="apiService.hasPermission('manage_workers')" mat-list-item
+        routerLink="/dashboard/gestionar-trabajadores">
+        <mat-icon matListIcon>supervised_user_circle</mat-icon>
+        <span matLine>Administrar trabajadores</span>
+      </a>
+      <a *ngIf="apiService.hasPermission('send_alerts')" mat-list-item routerLink="/dashboard/enviar-alertas">
+        <mat-icon matListIcon>reportar_problema</mat-icon>
+        <span matLine>Enviar alertas</span>
+      </a>
+      <a *ngIf="apiService.hasPermission('view_all_attendance')" mat-list-item
+        routerLink="/dashboard/ver-todas-las-asistencias">
+        <mat-icon matListIcon>lista</mat-icon>
+        <span matLine>Ver todas las asistencias</span>
+      </a>
+      <a *ngIf="apiService.hasPermission('notifications')" mat-list-item routerLink="/dashboard/notificaciones">
+        <mat-icon matListIcon>alarm</mat-icon>
+        <span matLine>Notificaciones <span
+            *ngIf="notification.unread_count>0">({{notification.unread_count}})</span></span>
       </a>
 
       <mat-list-item (click)="logout()">

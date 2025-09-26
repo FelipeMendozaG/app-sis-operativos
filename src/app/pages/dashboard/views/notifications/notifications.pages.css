@@ -1,0 +1,75 @@
+.notifications-container {
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.notifications-container h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.notification-card {
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notification-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+mat-card-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+mat-card-subtitle {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.status {
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.status.read {
+    color: green;
+}
+
+.status.unread {
+    color: red;
+}
+
+.empty {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+}
+
+.mark-read-btn {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mark-read-btn:hover {
+    background: linear-gradient(135deg, #43a047, #1b5e20);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+.mark-read-btn:active {
+    transform: scale(0.95);
+}

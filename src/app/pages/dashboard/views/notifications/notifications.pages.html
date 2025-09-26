@@ -1,0 +1,32 @@
+<div class="notifications-container">
+
+    <div *ngIf="notifications && notifications.length > 0; else noNotifications">
+        <mat-card *ngFor="let notif of notifications" class="notification-card">
+            <mat-card-header>
+                <mat-icon mat-card-avatar color="primary">
+                    {{ notif.is_read ? 'notifications' : 'notifications_active' }}
+                </mat-icon>
+                <mat-card-title>{{ notif.title }}</mat-card-title>
+                <mat-card-subtitle>
+                    {{ notif.created_at | date: 'short' }}
+                </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <p>{{ notif.message }}</p>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button class="mark-read-btn" (click)="markAsRead(notif)" *ngIf="!notif.is_read">
+                    Marcar como leída
+                </button>
+                <span *ngIf="notif.is_read" class="status read">✔ Leída</span>
+                <span *ngIf="!notif.is_read" class="status unread">🔔 Nueva</span>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+    <ng-template #noNotifications>
+        <p class="empty">No tienes notificaciones</p>
+    </ng-template>
+</div>

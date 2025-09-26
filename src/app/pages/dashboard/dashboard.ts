@@ -26,13 +26,14 @@ import { ApiService } from '../../services/api';
   styleUrls: ['./dashboard.css']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private router: Router, private apiService: ApiService) {}
-
+  constructor(private router: Router, public apiService: ApiService) {}
+  public notification:any = {}
   ngOnInit() {
     if (!this.apiService.getToken()) {
       // El usuario no está autenticado, redirigir a la página de inicio de sesión
       this.router.navigate(['/login']);
     }
+    this.GetAlertaNoRead();
   }
 
   logout() {
@@ -45,5 +46,15 @@ export class DashboardComponent implements OnInit {
 
   misAsistencias() {
     alert('Mostrando tus asistencias 📅');
+  }
+  GetAlertaNoRead(){
+    this.apiService.GetUnReadNotifications().subscribe({
+      next:(data)=>{
+        this.notification = data
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
   }
 }

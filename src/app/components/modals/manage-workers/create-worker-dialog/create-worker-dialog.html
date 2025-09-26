@@ -1,0 +1,57 @@
+<div class="full-width container">
+    <div class="header">
+        <h2 mat-dialog-title>Crear Trabajador</h2>
+    </div>
+    <mat-dialog-content>
+        <form [formGroup]="workerForm" class="form-grid">
+
+            <!-- Nombres -->
+            <mat-form-field appearance="outline">
+                <mat-label>Nombres</mat-label>
+                <input matInput id="nombres" formControlName="nombres" required class="full-width" />
+                <mat-error *ngIf="workerForm.get('nombres')?.hasError('required')">
+                    Los nombres son obligatorios
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <!-- Apellidos -->
+            <mat-form-field appearance="outline">
+                <mat-label>Apellidos</mat-label>
+                <input matInput id="apellidos" formControlName="apellidos" required />
+                <mat-error *ngIf="workerForm.get('apellidos')?.hasError('required')">
+                    Los apellidos son obligatorios
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <!-- Email -->
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput id="email" formControlName="email" type="email" required />
+                <mat-error *ngIf="workerForm.get('email')?.hasError('required')">
+                    El email es obligatorio
+                </mat-error>
+                <mat-error *ngIf="workerForm.get('email')?.hasError('email')">
+                    Ingresa un email válido
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <!-- Contraseña -->
+            <mat-form-field appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input matInput id="password" formControlName="password" type="password" required />
+                <mat-error *ngIf="workerForm.get('password')?.hasError('required')">
+                    La contraseña es obligatoria
+                </mat-error>
+                <mat-error *ngIf="workerForm.get('password')?.hasError('minlength')">
+                    Mínimo 6 caracteres
+                </mat-error>
+            </mat-form-field>
+
+        </form>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button mat-flat-button color="warn" (click)="onCancel()">Cancelar</button>
+        <button mat-flat-button color="primary" [disabled]="workerForm.invalid" (click)="onSubmit()">Guardar</button>
+    </mat-dialog-actions>
+</div>
